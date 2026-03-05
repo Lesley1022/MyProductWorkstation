@@ -1,9 +1,0 @@
-# Enforce stable line endings for workflow docs and configs
-.ai-workflow/agents/*.md text eol=lf
-.ai-workflow/skills/**/SKILL.md text eol=lf
-.ai-workflow/workflows/*.yaml text eol=lf
-.ai-workflow/workflows/*.md text eol=lf
-.ai-workflow/*.md text eol=lf
-.ai-workflow/scripts/*.ps1 text eol=lf
-
-docs/通用设计规范.md text eol=lf
