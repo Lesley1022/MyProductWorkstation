@@ -15,6 +15,7 @@
       - 禁止自动推进。
       - 必须执行模板门禁与引用门禁。
       - HTML 原型执行一屏一审。
+      - HTML 原型和 PRD 提审前，必须校验 `docs/通用设计规范.md` 符合性。
       - 每次修改后必须提交 Git。
 
 模型配置:
@@ -66,3 +67,6 @@
   - 触发条件: 模板或引用校验
     绑定工作流: .ai-workflow/workflows/template-config.yaml + .ai-workflow/workflows/document-reference-map.yaml
     处理动作: 未满足门禁不得提审
+  - 触发条件: HTML原型/PRD提审
+    绑定工作流: docs/通用设计规范.md
+    处理动作: 未通过通用规则符合性检查不得提审
