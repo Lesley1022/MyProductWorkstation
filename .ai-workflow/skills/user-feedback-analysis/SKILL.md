@@ -1,17 +1,35 @@
-﻿---
-name: user-feedback-analysis
-description: 用户反馈与调研证据整理
----
+﻿基础信息:
+  id: user-feedback-analysis
+  name: user_feedback_analysis
+  display_name: 用户反馈分析
+  description: 当需要整理访谈、问卷、工单等用户反馈并提炼洞察时，使用此技能。
 
-## 输入
-- 访谈记录/问卷/工单/聊天记录
+输入参数:
+  type: object
+  properties:
+    raw_inputs:
+      type: array
+      description: 原始反馈材料路径列表
+    output_path:
+      type: string
+      description: 分析输出路径
+  required:
+    - raw_inputs
+    - output_path
 
-## 输出
-- 用户原声清单
-- 主题归类洞察
-- 需求建议（含优先级）
+执行逻辑:
+  type: WORKFLOW
+  workflow: .ai-workflow/workflows/main.workflow.yaml
+  config:
+    stage: 用户调研
+    tool: user-feedback-analysis
 
-## 规则
-- 结论必须关联证据编号。
-- 区分“用户说的”和“分析判断”。
-- 无证据结论不得输出。
+输出解析:
+  success_output:
+    result: 用户反馈分析完成
+    fields:
+      - output_path
+      - evidence_index
+      - insights
+  error_output:
+    template: 用户反馈分析失败：{{error_message}}

@@ -1,14 +1,37 @@
-﻿---
-name: user-manual
-description: 用户手册编写
----
+﻿基础信息:
+  id: user-manual
+  name: user_manual
+  display_name: 用户手册
+  description: 当需要基于已通过文档输出用户操作手册时，使用此技能。
 
-## 输入
-- 已通过的 PRD 与原型
+输入参数:
+  type: object
+  properties:
+    prd_path:
+      type: string
+      description: PRD文档路径
+    prototype_path:
+      type: string
+      description: 原型路径
+    output_path:
+      type: string
+      description: 手册输出路径
+  required:
+    - prd_path
+    - output_path
 
-## 输出
-- 面向业务用户的操作手册
+执行逻辑:
+  type: WORKFLOW
+  workflow: .ai-workflow/workflows/main.workflow.yaml
+  config:
+    stage: 最终交付
+    tool: user-manual
 
-## 规则
-- 覆盖主流程、异常处理、常见问题。
-- 术语与按钮名称需与系统一致。
+输出解析:
+  success_output:
+    result: 用户手册生成成功
+    fields:
+      - output_path
+      - covered_scenarios
+  error_output:
+    template: 用户手册生成失败：{{error_message}}

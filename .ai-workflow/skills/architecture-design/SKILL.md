@@ -1,18 +1,42 @@
-﻿---
-name: architecture-design
-description: 生成产品架构文档
----
+﻿基础信息:
+  id: architecture-design
+  name: architecture_design
+  display_name: 架构设计
+  description: 当需要基于需求池、BRD、MRD产出产品架构文档与需求映射时，使用此技能。
 
-## 输入
-- 需求池（必须）
-- BRD（必须）
-- MRD（必须）
+输入参数:
+  type: object
+  properties:
+    demand_pool_path:
+      type: string
+      description: 需求池文档路径
+    brd_path:
+      type: string
+      description: BRD文档路径
+    mrd_path:
+      type: string
+      description: MRD文档路径
+    output_path:
+      type: string
+      description: 输出文件路径
+  required:
+    - demand_pool_path
+    - brd_path
+    - mrd_path
+    - output_path
 
-## 输出
-- 产品架构文档（业务/功能/数据/技术/集成/部署）
-- 需求映射表（需求ID -> 模块 -> 功能点）
+执行逻辑:
+  type: WORKFLOW
+  workflow: .ai-workflow/workflows/main.workflow.yaml
+  config:
+    stage: 产品架构
+    tool: architecture-design
 
-## 规则
-- 架构需覆盖全部 P0/P1。
-- 外部依赖需标注风险等级。
-- 性能与安全约束必须可验证。
+输出解析:
+  success_output:
+    result: 架构文档生成成功
+    fields:
+      - output_path
+      - mapping_summary
+  error_output:
+    template: 架构文档生成失败：{{error_message}}

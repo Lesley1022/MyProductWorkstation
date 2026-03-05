@@ -1,17 +1,42 @@
-﻿---
-name: revision-handler
-description: 变更处理与影响分析
----
+﻿基础信息:
+  id: revision-handler
+  name: revision_handler
+  display_name: 变更处理
+  description: 当收到“修改”反馈时，使用此技能分析影响范围并安排回归顺序。
 
-## 输入
-- 用户修改意见
-- 当前阶段已通过文档
+输入参数:
+  type: object
+  properties:
+    change_request:
+      type: string
+      description: 用户修改意见
+    current_stage:
+      type: string
+      description: 当前阶段名称
+    approved_docs:
+      type: array
+      description: 已通过文档列表
+    output_path:
+      type: string
+      description: 变更影响矩阵输出路径
+  required:
+    - change_request
+    - current_stage
+    - output_path
 
-## 输出
-- `change/变更影响矩阵_YYYYMMDD.md`
-- 受影响文档清单与回归顺序
+执行逻辑:
+  type: WORKFLOW
+  workflow: .ai-workflow/workflows/main.workflow.yaml
+  config:
+    stage: 变更回归
+    tool: revision-handler
 
-## 执行规则
-- 先判断影响阶段，再决定是否回退。
-- 仅回退受影响文档，避免全量重做。
-- 回归后必须重新提审。
+输出解析:
+  success_output:
+    result: 变更分析完成
+    fields:
+      - output_path
+      - affected_stages
+      - rollback_plan
+  error_output:
+    template: 变更分析失败：{{error_message}}
