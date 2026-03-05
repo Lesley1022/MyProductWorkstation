@@ -1,0 +1,22 @@
+{
+  "servers": {
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"],
+      "env": {}
+    },
+    "figma-local": {
+      "command": "node",
+      "args": [
+        "E:/MyProductWorkstation/claude-talk-to-figma-mcp/dist/talk_to_figma_mcp/server.js"
+      ],
+      "env": {}
+    },
+    "contract-parser": {
+      "command": "npx",
+      "args": ["-y", "contract-parser-mcp"],
+      "env": {}
+  }
+}
+}
