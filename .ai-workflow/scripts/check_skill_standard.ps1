@@ -47,3 +47,4 @@ if ($failed) {
 }
 
 Write-Host "[check_skill_standard] PASS" -ForegroundColor Green
+

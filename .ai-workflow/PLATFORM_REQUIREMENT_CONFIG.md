@@ -20,3 +20,4 @@
 - 模块有特殊规则时，必须在对应设计文档/PRD中明确“特殊规则覆盖点”。
 - 引用关系以 `workflows/document-reference-map.yaml` 为准。
 - 模板映射以 `workflows/template-config.yaml` 为准。
+

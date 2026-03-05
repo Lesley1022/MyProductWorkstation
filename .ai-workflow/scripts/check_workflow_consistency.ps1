@@ -51,3 +51,4 @@ if ($failed) {
 }
 
 Write-Host "[check_workflow_consistency] PASS" -ForegroundColor Green
+

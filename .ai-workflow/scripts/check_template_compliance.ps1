@@ -32,3 +32,4 @@ if ($failed) {
 }
 
 Write-Host "[check_template_compliance] PASS" -ForegroundColor Green
+
