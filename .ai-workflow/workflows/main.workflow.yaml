@@ -1,4 +1,13 @@
-﻿stages:
+﻿execution_policy:
+  strict_step_review: true
+  document_dependency_gate: true
+  forbid_auto_advance: true
+  approval_keyword: 通过
+  html_screen_review:
+    enabled: true
+    mode: one_screen_one_review
+    require_approval_each_screen: true
+stages:
   - name: 需求收集整理
     gate: 审核通过
   - name: 市场分析
@@ -49,3 +58,4 @@
       - HTML原型
       - 产品架构
       - 需求池
+
