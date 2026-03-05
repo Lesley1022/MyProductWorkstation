@@ -30,3 +30,12 @@
     输出字段: [output_path, doc_index]
   error_output:
     模板: 交付包生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: writer
+  允许阶段: [最终交付]
+  前置条件:
+    - 相关文档均为已通过状态
+  禁止事项:
+    - 不得引用未通过文档

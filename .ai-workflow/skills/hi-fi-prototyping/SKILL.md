@@ -42,3 +42,13 @@
     输出字段: [output_path, screen_name, rule_check_summary]
   error_output:
     模板: 原型生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: designer
+  允许阶段: [HTML原型]
+  前置条件:
+    - 产品架构与 MRD 已通过
+    - 通用规则文档已载入
+  禁止事项:
+    - 不得一次生成多个界面

@@ -33,3 +33,12 @@
     输出字段: [output_path, decision_suggestion]
   error_output:
     模板: BRD 生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: writer
+  允许阶段: [BRD]
+  前置条件:
+    - 需求池已通过
+  禁止事项:
+    - 未通过 BRD 审核不得进入 MRD

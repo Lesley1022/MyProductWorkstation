@@ -36,3 +36,12 @@
     输出字段: [output_path, key_risks, action_plan]
   error_output:
     模板: 专项分析失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: researcher 或 energy_market_analyst
+  允许阶段: [政策调研]
+  前置条件:
+    - 存在政策或电价机制分析需求
+  禁止事项:
+    - 不得脱离政策原文进行判断

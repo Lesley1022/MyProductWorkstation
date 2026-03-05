@@ -30,3 +30,12 @@
     输出字段: [output_path, evidence_index, insights]
   error_output:
     模板: 用户反馈分析失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: researcher
+  允许阶段: [市场分析, 竞品调研, 用户调研]
+  前置条件:
+    - 已有用户反馈或访谈材料
+  禁止事项:
+    - 不得无证据产出结论

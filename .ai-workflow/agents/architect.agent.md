@@ -34,3 +34,11 @@
   - 触发条件: 进入产品架构阶段
     绑定工作流: .ai-workflow/workflows/main.workflow.yaml
     处理动作: 仅在需求池+BRD+MRD已通过时执行
+
+调度约束:
+  上游调度者: pm
+  可执行阶段: [产品架构]
+  可调用Skill:
+    - architecture-design
+  禁止事项:
+    - 未满足需求池+BRD+MRD通过状态，不得执行。

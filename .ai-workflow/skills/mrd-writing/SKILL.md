@@ -33,3 +33,12 @@
     输出字段: [output_path, core_features]
   error_output:
     模板: MRD 生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: writer
+  允许阶段: [MRD]
+  前置条件:
+    - BRD 已通过
+  禁止事项:
+    - 不得在 BRD 未通过时提前产出 MRD

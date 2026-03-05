@@ -36,3 +36,12 @@
     输出字段: [output_path, mapping_summary]
   error_output:
     模板: 架构文档生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: architect
+  允许阶段: [产品架构]
+  前置条件:
+    - 需求池、BRD、MRD均已通过
+  禁止事项:
+    - 不得缺少任一前置输入

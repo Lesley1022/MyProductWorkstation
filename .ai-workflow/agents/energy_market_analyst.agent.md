@@ -34,3 +34,11 @@
   - 触发条件: 研究阶段出现能源专项问题
     绑定工作流: .ai-workflow/workflows/main.workflow.yaml
     处理动作: 在政策调研阶段补充专项输入
+
+调度约束:
+  上游调度者: pm 或 researcher
+  可执行阶段: [政策调研]
+  可调用Skill:
+    - energy-market-analysis
+  禁止事项:
+    - 不得在非政策调研阶段独立出稿。

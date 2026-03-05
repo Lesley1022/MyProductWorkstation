@@ -33,3 +33,12 @@
     输出字段: [output_path, review_conclusion]
   error_output:
     模板: 原型评审失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: reviewer
+  允许阶段: [评审]
+  前置条件:
+    - 存在待评审单界面原型
+  禁止事项:
+    - 仅评审，不生成业务文档

@@ -41,3 +41,13 @@
     输出字段: [output_path, acceptance_coverage, rule_check_summary]
   error_output:
     模板: PRD 生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: writer
+  允许阶段: [PRD]
+  前置条件:
+    - HTML原型、产品架构、需求池均已通过
+    - 通用规则文档已载入
+  禁止事项:
+    - 不得在 HTML 原型未通过时产出 PRD

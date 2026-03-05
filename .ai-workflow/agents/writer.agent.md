@@ -59,3 +59,15 @@
   - 触发条件: PRD 规则一致性校验
     绑定工作流: docs/通用设计规范.md
     处理动作: 未通过通用规则检查不得提审
+
+调度约束:
+  上游调度者: pm
+  可执行阶段: [BRD, MRD, PRD, 最终交付]
+  可调用Skill:
+    - brd-writing
+    - mrd-writing
+    - prd-writing
+    - final-documentation
+    - user-manual
+  禁止事项:
+    - 必须按阶段顺序写作，不得提前生成下游文档。

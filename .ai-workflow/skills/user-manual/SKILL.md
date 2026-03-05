@@ -33,3 +33,12 @@
     输出字段: [output_path, covered_scenarios]
   error_output:
     模板: 用户手册生成失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: writer
+  允许阶段: [最终交付]
+  前置条件:
+    - PRD 已通过
+  禁止事项:
+    - 不得与 PRD 术语和流程不一致

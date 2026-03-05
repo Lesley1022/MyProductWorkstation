@@ -33,3 +33,12 @@
     输出字段: [output_path, priority_distribution]
   error_output:
     模板: 需求排序失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: pm
+  允许阶段: [需求池]
+  前置条件:
+    - 研究阶段文档已通过
+  禁止事项:
+    - 不得在需求收集阶段提前排序

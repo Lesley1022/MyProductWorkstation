@@ -43,3 +43,13 @@
   - 触发条件: 校验引用关系
     绑定工作流: .ai-workflow/workflows/document-reference-map.yaml
     处理动作: 缺少必须引用不得提审
+
+调度约束:
+  上游调度者: pm
+  可执行阶段: [市场分析, 政策调研, 竞品调研, 用户调研]
+  可调用Skill:
+    - user-feedback-analysis
+    - energy-market-analysis
+  禁止事项:
+    - 未经 PM 调度，不得跨阶段独立产出。
+    - 不得调用未登记 Skill。

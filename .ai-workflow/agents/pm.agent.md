@@ -70,3 +70,49 @@
   - 触发条件: HTML原型/PRD提审
     绑定工作流: docs/通用设计规范.md
     处理动作: 未通过通用规则符合性检查不得提审
+
+阶段调度矩阵:
+  说明: PM 仅按 main.workflow.yaml 的阶段顺序调度，未“通过”不得越级。
+  调度链路:
+    - 阶段: 需求收集整理
+      调用Agent: pm
+      调用Skill: 无（PM直接执行收集与补问）
+    - 阶段: 市场分析
+      调用Agent: researcher
+      调用Skill: user-feedback-analysis（可选）
+    - 阶段: 政策调研
+      调用Agent: researcher
+      调用Skill: energy-market-analysis（按需）
+    - 阶段: 竞品调研
+      调用Agent: researcher
+      调用Skill: user-feedback-analysis（可选）
+    - 阶段: 用户调研
+      调用Agent: researcher
+      调用Skill: user-feedback-analysis
+    - 阶段: 需求池
+      调用Agent: pm
+      调用Skill: backlog-prioritization（按需）
+    - 阶段: BRD
+      调用Agent: writer
+      调用Skill: brd-writing
+    - 阶段: MRD
+      调用Agent: writer
+      调用Skill: mrd-writing
+    - 阶段: 产品架构
+      调用Agent: architect
+      调用Skill: architecture-design
+    - 阶段: HTML原型
+      调用Agent: designer
+      调用Skill: hi-fi-prototyping
+    - 阶段: PRD
+      调用Agent: writer
+      调用Skill: prd-writing
+    - 阶段: 评审
+      调用Agent: reviewer
+      调用Skill: design-critique（原型评审时）
+    - 阶段: 变更回归
+      调用Agent: pm
+      调用Skill: revision-handler
+    - 阶段: 最终交付（可选）
+      调用Agent: writer
+      调用Skill: final-documentation / user-manual

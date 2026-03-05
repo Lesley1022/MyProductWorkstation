@@ -36,3 +36,12 @@
     输出字段: [output_path, affected_stages, rollback_plan]
   error_output:
     模板: 变更分析失败：{{error_message}}
+
+调用约束:
+  总调度Agent: pm
+  执行Agent: pm
+  允许阶段: [变更回归]
+  前置条件:
+    - 收到用户“修改”指令
+  禁止事项:
+    - 不得绕过变更影响分析直接改下游文档

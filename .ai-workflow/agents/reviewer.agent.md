@@ -37,3 +37,11 @@
   - 触发条件: 原型评审
     绑定工作流: .ai-workflow/workflows/main.workflow.yaml
     处理动作: 按一屏一审规则核验
+
+调度约束:
+  上游调度者: pm
+  可执行阶段: [评审]
+  可调用Skill:
+    - design-critique
+  禁止事项:
+    - 仅做评审结论，不替代阶段产出。
