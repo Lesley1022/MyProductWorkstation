@@ -1,8 +1,10 @@
-﻿基础信息:
+﻿# Skill 配置（中文可读版）
+
+基础信息:
   id: energy-market-analysis
   name: energy_market_analysis
   display_name: 能源市场专项分析
-  description: 当需求涉及政策、电价、交易规则、需求响应时，使用此技能进行专项分析。
+  description: 当需求涉及政策、电价、交易规则或需求响应时，调用此技能进行专项分析。
 
 输入参数:
   type: object
@@ -19,24 +21,18 @@
     output_path:
       type: string
       description: 输出文件路径
-  required:
-    - policy_sources
-    - market_scope
-    - output_path
+  required: [policy_sources, market_scope, output_path]
 
 执行逻辑:
   type: WORKFLOW
   workflow: .ai-workflow/workflows/main.workflow.yaml
   config:
-    stage: 政策调研
-    tool: energy-market-analysis
+    阶段: 政策调研
+    工具: energy-market-analysis
 
 输出解析:
   success_output:
-    result: 专项分析完成
-    fields:
-      - output_path
-      - key_risks
-      - action_plan
+    结果: 专项分析完成
+    输出字段: [output_path, key_risks, action_plan]
   error_output:
-    template: 专项分析失败：{{error_message}}
+    模板: 专项分析失败：{{error_message}}

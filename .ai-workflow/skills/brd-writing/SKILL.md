@@ -1,8 +1,10 @@
-﻿基础信息:
+﻿# Skill 配置（中文可读版）
+
+基础信息:
   id: brd-writing
   name: brd_writing
   display_name: 生成商业需求文档
-  description: 当需求池已通过审核并需要产出BRD（商业需求）时，使用此技能。
+  description: 当需求池已通过审核并需要输出 BRD（商业需求）时，调用此技能。
 
 输入参数:
   type: object
@@ -15,23 +17,19 @@
       description: 可选参考文档路径列表
     output_path:
       type: string
-      description: BRD输出路径
-  required:
-    - demand_pool_path
-    - output_path
+      description: BRD 输出路径
+  required: [demand_pool_path, output_path]
 
 执行逻辑:
   type: WORKFLOW
   workflow: .ai-workflow/workflows/main.workflow.yaml
   config:
-    stage: BRD
-    tool: brd-writing
+    阶段: BRD
+    工具: brd-writing
 
 输出解析:
   success_output:
-    result: BRD生成成功
-    fields:
-      - output_path
-      - decision_suggestion
+    结果: BRD 生成成功
+    输出字段: [output_path, decision_suggestion]
   error_output:
-    template: BRD生成失败：{{error_message}}
+    模板: BRD 生成失败：{{error_message}}
