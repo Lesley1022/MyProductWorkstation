@@ -1,4 +1,4 @@
-template_registry:
+﻿template_registry:
   - stage: 需求收集整理
     template: docs/templates/需求收集整理模板.md
     required: true
