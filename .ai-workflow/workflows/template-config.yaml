@@ -1,0 +1,31 @@
+template_registry:
+  - stage: 需求收集整理
+    template: docs/templates/需求收集整理模板.md
+    required: true
+  - stage: 市场分析
+    template: docs/templates/市场分析模板.md
+    required: true
+  - stage: 政策调研
+    template: docs/templates/政策调研模板.md
+    required: true
+  - stage: 竞品调研
+    template: docs/templates/竞品调研模板.md
+    required: true
+  - stage: 用户调研
+    template: docs/templates/用户调研模板.md
+    required: true
+  - stage: 需求池
+    template: docs/templates/需求池模板.md
+    required: true
+  - stage: BRD
+    template: docs/templates/商业需求分析（BRD）模板.md
+    required: true
+  - stage: MRD
+    template: docs/templates/商业需求分析（MRD）模板.md
+    required: true
+  - stage: 产品架构
+    template: docs/templates/产品架构模板.md
+    required: true
+  - stage: PRD
+    template: docs/templates/产品需求文档（PRD）模板.md
+    required: true

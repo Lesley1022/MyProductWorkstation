@@ -16,3 +16,4 @@
 - 下一文档必须引用上一文档已通过内容。
 - 研究阶段来源与证据索引必须落外部文件。
 - 文档间引用关系以 `.ai-workflow/workflows/document-reference-map.yaml` 为准；`必须`引用项缺失时不得提审。
+- 模板与阶段映射以 `.ai-workflow/workflows/template-config.yaml` 为准；模板缺失或映射不一致时不得提审。
