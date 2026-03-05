@@ -1,0 +1,30 @@
+﻿stages:
+  - name: 市场分析
+    gate: 审核通过
+  - name: 政策调研
+    gate: 审核通过
+    depends_on:
+      - 市场分析
+  - name: 竞品调研
+    gate: 审核通过
+    depends_on:
+      - 政策调研
+  - name: 用户调研
+    gate: 审核通过
+    depends_on:
+      - 竞品调研
+  - name: 需求池
+    gate: 审核通过
+    depends_on:
+      - 市场分析
+      - 政策调研
+      - 竞品调研
+      - 用户调研
+  - name: 商业需求
+    gate: 审核通过
+    depends_on:
+      - 需求池
+  - name: 市场需求
+    gate: 审核通过
+    depends_on:
+      - 商业需求
