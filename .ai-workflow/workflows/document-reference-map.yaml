@@ -1,0 +1,163 @@
+﻿reference_principles:
+  - principle: 必须引用
+    description: 当前文档的核心输入，缺失则文档无法独立完成或逻辑不完整
+  - principle: 可选引用
+    description: 增强说服力或丰富细节，但不影响文档基础结构的完整性
+  - principle: 只引事实不引结论
+    description: 引用的是前序文档的客观事实（如用户原声、政策原文、数据），而非前序文档的主观结论，确保每个文档独立得出自己的判断
+  - principle: 可追溯性
+    description: 所有引用需标注具体位置（如报告页码、需求ID、访谈编号），便于追溯验证
+document_reference_map:
+  - current_doc: 需求收集整理
+    refs:
+      - type: 外部输入
+        source: 业务方、销售、客服、运营等
+        content: 需求描述、提出人、提出时间、业务场景、初步价值判断
+        purpose: 记录原始需求，为后续分析提供素材
+
+  - current_doc: 市场分析报告
+    refs:
+      - type: 可选
+        source: 需求收集整理
+        content: 高频出现的需求方向、业务方关注的市场领域
+        purpose: 帮助聚焦市场分析范围
+      - type: 外部数据
+        source: 行业报告、政府数据、券商研报
+        content: 市场规模、增长率、PEST数据、竞争格局
+        purpose: 支撑市场分析结论
+
+  - current_doc: 政策调研报告
+    refs:
+      - type: 必须
+        source: 市场分析报告
+        content: 目标市场定义、用户群体、区域范围
+        purpose: 确保政策解读聚焦在正确范围
+      - type: 外部数据
+        source: 政府官网、政策文件
+        content: 政策原文、条款、生效时间、发布机构
+        purpose: 进行条款梳理和影响分析
+
+  - current_doc: 竞品分析报告
+    refs:
+      - type: 必须
+        source: 政策调研报告
+        content: 合规要求、政策鼓励方向、禁止性条款
+        purpose: 建立竞品对比的合规维度
+      - type: 可选
+        source: 市场分析报告
+        content: 主要玩家列表、市场份额数据
+        purpose: 确定竞品选择范围
+
+  - current_doc: 用户调研报告
+    refs:
+      - type: 必须
+        source: 竞品分析报告
+        content: 竞品功能差异点、竞品用户槽点、差异化机会假设
+        purpose: 带着竞品发现去用户中验证
+      - type: 可选
+        source: 需求收集整理
+        content: 业务方高频需求、用户原话
+        purpose: 作为调研参考线索（需中立验证）
+
+  - current_doc: 需求池
+    refs:
+      - type: 必须
+        source: 用户调研报告
+        content: 用户原声、痛点描述、使用场景、画像标签
+        purpose: 支撑需求真实性与优先级
+      - type: 必须
+        source: 市场分析报告
+        content: 市场规模、增长趋势、细分赛道机会
+        purpose: 判断需求商业价值上限
+      - type: 必须
+        source: 政策调研报告
+        content: 合规要求、政策截止时间、鼓励方向
+        purpose: 识别合规需求优先级与紧急度
+      - type: 必须
+        source: 竞品分析报告
+        content: 竞品功能对照、空白点、优劣势
+        purpose: 判断需求差异化价值
+
+  - current_doc: BRD
+    refs:
+      - type: 必须
+        source: 需求池
+        content: P0/P1需求、需求价值描述、需求ID
+        purpose: 确定BRD核心功能范围
+      - type: 可选
+        source: 市场分析报告
+        content: 市场规模、增长趋势
+        purpose: 增强商业机会说服力
+      - type: 可选
+        source: 政策调研报告
+        content: 政策条款、政策红利
+        purpose: 证明合规必要性或政策窗口
+      - type: 可选
+        source: 竞品分析报告
+        content: 竞品截图、定价、空白点
+        purpose: 证明差异化机会
+      - type: 可选
+        source: 用户调研报告
+        content: 用户原声、痛点量化数据
+        purpose: 增强需求真实性
+
+  - current_doc: MRD
+    refs:
+      - type: 必须
+        source: BRD
+        content: 产品方向、核心功能列表、目标用户群体
+        purpose: 确保MRD与BRD方向一致
+      - type: 可选
+        source: 用户调研报告
+        content: 用户画像卡片、旅程地图、典型故事
+        purpose: 深化用户场景理解
+      - type: 可选
+        source: 竞品分析报告
+        content: 竞品用户体验对比
+        purpose: 参考交互设计
+
+  - current_doc: 产品架构
+    refs:
+      - type: 必须
+        source: 需求池
+        content: P0/P1需求列表、功能点描述
+        purpose: 归并需求并确定模块边界
+      - type: 必须
+        source: BRD
+        content: 商业目标、ROI要求、扩展性需求
+        purpose: 确保架构支撑商业目标
+      - type: 必须
+        source: MRD
+        content: 用户场景、用户旅程、核心流程
+        purpose: 确保架构覆盖核心场景
+
+  - current_doc: HTML原型
+    refs:
+      - type: 必须
+        source: 产品架构
+        content: 模块划分、功能列表、数据流向
+        purpose: 确定页面结构和流转关系
+      - type: 必须
+        source: MRD
+        content: 用户场景、用户故事、核心流程
+        purpose: 确保原型覆盖核心场景
+
+  - current_doc: PRD
+    refs:
+      - type: 必须
+        source: HTML原型
+        content: 交互流程、页面布局、页面元素
+        purpose: 作为功能详述的界面基础
+      - type: 必须
+        source: 产品架构
+        content: 模块划分、数据流向、技术约束
+        purpose: 确保功能设计符合架构
+      - type: 必须
+        source: 需求池
+        content: P0/P1需求列表、需求价值描述
+        purpose: 确保覆盖高优需求
+      - type: 可选
+        source: 用户调研报告
+        content: 用户原声、场景细节
+        purpose: 补充设计上下文
+
